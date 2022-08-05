@@ -24,7 +24,7 @@
             </a-assets>
 
                 <a-entity
-                    link="href:https://khilller.github.io/ar-sections/; title: AR Sections"
+                    mylink="href: https://khilller.github.io/ar-sections/;"
                     look-at="[gps-camera]"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
@@ -35,4 +35,19 @@
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>
     </body>
+    <script>
+  // component declaration
+  AFRAME.registerComponent("mylink", {
+    // define a url in the schema
+    schema: {
+      href: {}
+    },
+    init: function() {
+      // when clicked - change the location:
+      this.el.addEventListener("click", (e) => {
+        window.location = this.data.href;
+      })
+    }
+  })
+</script>
 </html>
